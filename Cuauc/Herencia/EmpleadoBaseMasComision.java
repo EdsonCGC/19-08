@@ -1,0 +1,63 @@
+// EmpleadoBaseMasComision.java
+// La clase EmpleadoBaseMasComision representa a un empleado que recibe
+// un salario base, además de la comisión
+
+public class EmpleadoBaseMasComision extends EmpleadoPorComision{
+	private double salarioBase; // salario base por semana
+
+	// constructor con seis argumentos
+	public EmpleadoBaseMasComision(String primerNombre, String apellidoPaterno, 
+		String numeroSeguroSocial, double ventasBrutas, 
+		double tarifaComision, double salarioBase)
+	{
+		// la llamada implícita al constructor predeterminado de Object ocurre aquí
+		super(primerNombre, apellidoPaterno, numeroSeguroSocial, ventasBrutas, tarifaComision);
+
+		// si ventas Brutas son inválidas, lanza excepción
+		if(ventasBrutas < 0.0)
+			throw new IllegalArgumentException(
+				"Las ventas brutas deben ser >= 0.0");
+		
+		// si tarifa comisión es inválida, lanza excepción
+		if(tarifaComision <= 0.0 || tarifaComision >= 1.0)
+			throw new IllegalArgumentException(
+				"La tarifa de comisión debe ser >0.0 y < 1.0");
+
+		// si salarioBase es inválido, lanza excepción
+		if(salarioBase < 0.0)
+			throw new IllegalArgumentException(
+				"El salario base debe ser >= 0.0");
+
+		this.salarioBase = salarioBase;
+	} // fin del constructor
+
+
+	// establece el salario base
+	public void establecerSalarioBase(double salarioBase)
+	{
+		if(salarioBase < 0.0)
+			throw new IllegalArgumentException(
+				"El salario base debe ser >= 0.0");
+
+		this.salarioBase = salarioBase;
+	}
+
+	// devuelve el salario base
+	public double obtenerSalarioBase()
+	{
+		return salarioBase;
+	}
+
+	@Override
+	public double ingresos()
+	{
+		return obtenerSalarioBase() + super.ingresos();
+	}
+
+	// devuelve representación String de EmpleadoBaseMasComision
+	@Override
+	public String toString()
+	{
+		return String.format("%s%n%s%n%s: %.2f","Con sueldo base", super.toString(), "salario base", obtenerSalarioBase());
+	}
+}
