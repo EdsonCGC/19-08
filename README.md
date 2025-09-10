@@ -1,0 +1,1 @@
+Profe, se me perdio la memoria en la clase de Ana Luisa, tuve ahi unos detalles debido a que la profesora me dijo que si tenia mi memoria pero la que tenia no era mia y la verdad me pasaron ya los codigos, se los voy a mandar aunque sea a destiempo
